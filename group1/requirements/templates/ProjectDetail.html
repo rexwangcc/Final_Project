@@ -5,11 +5,12 @@
 <div id="wrapper">
 	<div id="page-wrapper">
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-9">
 				<h1 class="page-header">
 					{{ project.title }}
 				</h1>
 			</div>
+			<button type="button" onclick="location.href='/req/makefile/{{ project.id }}'"> Download Report of This Project</button>
 		</div>
 		<div class="row">
 			<div class="col-lg-8 col-md-12">
@@ -48,6 +49,7 @@
 
 								                    {% check_permission association project "MoveStoryToIteration" as can_move_story %}
 								                    {% if can_move_story %}
+                                                                                    
             	    	    	                    <div class="btn-group pull-right">
             	    	    	                    <!--data-move-story attribute used for ui test automation -->
     	    	                    	                <button class="btn btn-default dropdown-toggle pull-right" 
@@ -59,13 +61,21 @@
             	    	    	                      	</button>
             	    	    	                      	<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
             	    	    	                       		{% for iter_local in iterations %}
+                                                                
             	    	    	                        	<li role="presentation">
             	    	    	                        		<a role="menuitem" tabindex="-1" href="/req/movestorytoiter/{{project.id}}/{{story.id}}/{{iter_local.id}}">{{iter_local.title}}</a>
             	    	    	                        	</li>
-            	    	    	                        	{% endfor %}
+            	    	    	                        	{% empty %}
+                                                                                     <li role="presentation" id="noiteration"><a>No Iteration</a></li>
+                                                                {% endfor %}
+                                                                
+                                                                
+                                                                
             	    	    	                      	</ul>
             	    	    	                    </div>
+                                                                                    
             	    	    	                    {% endif %}
+                                                    
 
                                                     {% check_permission association project "DeleteStory" as can_delete %} 
                                                     {% if can_delete %}

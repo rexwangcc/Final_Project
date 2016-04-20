@@ -114,6 +114,12 @@ class IterationForm(forms.ModelForm):
 
 
 class ProjectForm(forms.ModelForm):
+<<<<<<< HEAD
+=======
+
+    dup = 0
+
+>>>>>>> f05839183c528837ea44e84abd770f5e62fa9b9a
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)
         for name, field in self.fields.items():
@@ -121,6 +127,15 @@ class ProjectForm(forms.ModelForm):
                 field.widget.attrs['class'] += ' form-control'
             else:
                 field.widget.attrs.update({'class': 'form-control'})
+
+    def clean_title(self):
+        title = self.cleaned_data['title']
+        if self.dup == 1:
+            raise forms.ValidationError('Duplicate project title')
+        return title
+
+    def if_dup(self,dup):
+        self.dup = dup
 
     class Meta:
         model = Project
