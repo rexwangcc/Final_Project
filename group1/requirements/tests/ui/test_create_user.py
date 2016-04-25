@@ -60,8 +60,8 @@ class TestCreate(unittest.TestCase):
         self.home()
         self.passwordConfirm()
         self.nameConfirm()
-        self.emailConfirm()
-        self.withoutEmail()
+       # self.emailConfirm()
+       # self.withoutEmail()
         
         self.activate()
         self.deleteTestUser()
@@ -171,11 +171,11 @@ class TestCreate(unittest.TestCase):
 	time.sleep(2)
 
         driver.find_element_by_xpath("//input[@type='submit']").click()
-        driver.find_element_by_link_text('test1').click()
-        driver.find_element_by_link_text("Delete").click()
-        time.sleep(1)
+        #driver.find_element_by_link_text('test1').click()
+        #driver.find_element_by_link_text("Delete").click()
+        #time.sleep(1)
 
-        driver.find_element_by_xpath("//input[@type='submit']").click()
+        #driver.find_element_by_xpath("//input[@type='submit']").click()
 
         driver.find_element_by_link_text("Log out").click()
         driver.get(self.base_url + "/")
