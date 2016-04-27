@@ -86,3 +86,5 @@ cd /c/g1/source/deploy_tools
 ###### note: must activate virtualenv with fabric (you may have fabric installed on your path python, and not require a virtualenv)
 ##### run the fabfile.py script with the following command to upload the project from origin/master to the specified server
 fab deploy:host=pgmvt@dev.3blueprints.com
+
+#JENKINS INSTALLATION
